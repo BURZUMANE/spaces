@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Space Invaders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--
+        1. HTML
+        2. CSS
+        3. div.background 1200x800
+        4. div.hero 50x50
+        5. move left / right (bonus: move up/down)  (bonus: move hero with mouse)
+        6. fire 17x47
+        7. game loop
+        8. div.enemy
+        9. enemy objects / enemy movement
+        10. collision detection
+    -->
+    <div id="background">
+        <div id="hero"></div>
+        <div class="enemy"></div>
+        <div class="missiles"></div>
+    </div>
+    <script>
+
+        var hero = {
+            top: 700,
+            left: 550
+        };
+
+        var missiles = [];
+
+        document.onkeydown = function (deez) {
+            console.log(deez.keyCode);
+
+            if (deez.keyCode === 37){
+                console.log("LEFT")
+                hero.left  -= 10;
+                moveHero()
+            }
+            else if (deez.keyCode === 39){
+                console.log("RIGHT")
+                hero.left += 10;
+                moveHero()
+            }
+            else if (deez.keyCode === 32) {
+                console.log("FIRE");
+                missiles.push({
+                    left: hero.left + 15,
+                    top: hero.top
+                })
+            }
+            console.log(missiles);
+        }
+
+
+        function moveHero() {
+            document.getElementById("hero").style.left = hero.left + "px";
+        }
+
+        function drawMissiles() {
+            document.getElementById("missiles").innerText = "";
+            for( var missile = 0; missile < missiles.length; missile++) {
+                document.getElementById("missiles").innerText += `<div class='' style=''></div>`;
+                missiles[missile].left;
+            }
+        }
+    </script>
+</body>
+</html>
